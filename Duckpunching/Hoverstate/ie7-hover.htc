@@ -1,0 +1,22 @@
+<PUBLIC:COMPONENT lightWeight="true">
+<PUBLIC:ATTACH EVENT="onmouseenter" FOR="element" ONEVENT="twoMenEnter()" />
+<PUBLIC:ATTACH EVENT="onmouseleave" FOR="element" ONEVENT="oneManLeaves()" />
+<SCRIPT LANGUAGE="JScript">
+function classSansHover(className) {
+	var i, classes = className.split(' '), newClasses=[];
+	for (i=0; i<classes.length; i++) {
+		if (classes[i]=='hover' || classes[i]=='') continue;
+		newClasses.push(classes[i]);
+	}
+	return newClasses;
+}
+function twoMenEnter() {
+	var classes = classSansHover(element.className);
+	classes.push('hover');
+	element.className = classes.join(' ');
+}
+function oneManLeaves() {
+	element.className=classSansHover(element.className).join(' ');
+}
+</SCRIPT>
+</PUBLIC:COMPONENT>
